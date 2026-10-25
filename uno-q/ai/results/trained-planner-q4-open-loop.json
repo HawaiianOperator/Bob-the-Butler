@@ -1,0 +1,71 @@
+{
+  "kind": "UNO Q quantized planner inference; synthetic observations, no desktop execution",
+  "goal": "hey can you open stocks for nvidai",
+  "results": [
+    {
+      "expected": "launch_chrome",
+      "plan": {
+        "tool": "launch_chrome",
+        "args": {
+          "url": "https://www.google.com/"
+        }
+      },
+      "tool_match": true,
+      "seconds": 22.271
+    },
+    {
+      "expected": "hotkey",
+      "plan": {
+        "tool": "hotkey",
+        "args": {
+          "keys": "ctrl+l"
+        }
+      },
+      "tool_match": true,
+      "seconds": 9.661
+    },
+    {
+      "expected": "type_text",
+      "plan": {
+        "tool": "type_text",
+        "args": {
+          "text": "Nvidia stock"
+        }
+      },
+      "tool_match": true,
+      "seconds": 9.791
+    },
+    {
+      "expected": "press_key",
+      "plan": {
+        "tool": "observe",
+        "args": {}
+      },
+      "tool_match": false,
+      "seconds": 10.634
+    },
+    {
+      "expected": "observe",
+      "plan": {
+        "tool": "press_key",
+        "args": {
+          "key": "enter"
+        }
+      },
+      "tool_match": false,
+      "seconds": 9.649
+    },
+    {
+      "expected": "done",
+      "plan": {
+        "tool": "done",
+        "args": {
+          "message": "Showing search results for Nvidia stock."
+        }
+      },
+      "tool_match": true,
+      "seconds": 16.777
+    }
+  ],
+  "all_tools_match": false
+}

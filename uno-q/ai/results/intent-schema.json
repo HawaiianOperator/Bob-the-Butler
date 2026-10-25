@@ -1,0 +1,64 @@
+{
+  "hardware": "Arduino UNO Q 4GB",
+  "architecture": "aarch64",
+  "runtime": "b11869",
+  "scope": "One text-only request per model, constrained query schema; query extraction only, no browser or OS action executed.",
+  "results": [
+    {
+      "model": "SmolVLM-500M-Instruct",
+      "precision": "Q8_0",
+      "cpu_threads": 4,
+      "context": 2048,
+      "response_constraint": "json_schema",
+      "cases": [
+        {
+          "id": "chat-intent",
+          "seconds": 3.66,
+          "output": "{\n    \"query\": \"nvidia stocks\"\n}",
+          "hit": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 52,
+            "prompt_ms": 2465.157,
+            "prompt_per_token_ms": 47.40686538461539,
+            "prompt_per_second": 21.09399117378731,
+            "predicted_n": 14,
+            "predicted_ms": 1168.364,
+            "predicted_per_token_ms": 89.87415384615385,
+            "predicted_per_second": 11.126669428363078
+          }
+        }
+      ],
+      "load_seconds": 1.59,
+      "peak_rss_kib": 697740
+    },
+    {
+      "model": "SmolVLM-256M-Instruct",
+      "precision": "Q8_0",
+      "cpu_threads": 4,
+      "context": 2048,
+      "response_constraint": "json_schema",
+      "cases": [
+        {
+          "id": "chat-intent",
+          "seconds": 2.3,
+          "output": "{\n    \"query\": \"nvidia-s1000-s1000-s1000-s1000-s1000-",
+          "hit": false,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 52,
+            "prompt_ms": 981.043,
+            "prompt_per_token_ms": 18.86621153846154,
+            "prompt_per_second": 53.00481222535607,
+            "predicted_n": 40,
+            "predicted_ms": 1300.691,
+            "predicted_per_token_ms": 33.35105128205128,
+            "predicted_per_second": 29.984062317645005
+          }
+        }
+      ],
+      "load_seconds": 1.52,
+      "peak_rss_kib": 374796
+    }
+  ]
+}

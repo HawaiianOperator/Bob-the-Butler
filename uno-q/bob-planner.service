@@ -1,0 +1,22 @@
+[Unit]
+Description=Bob local Qwen tool planner
+After=local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/opt/bob-the-butler/runtime/llama-server --model /opt/bob-the-butler/model/bob-q4_k_m.gguf --host 127.0.0.1 --port 8081 --threads 4 --ctx-size 2048 --parallel 1 --n-gpu-layers 0 --jinja
+WorkingDirectory=/opt/bob-the-butler/runtime
+Environment=LD_LIBRARY_PATH=/opt/bob-the-butler/runtime
+Restart=on-failure
+RestartSec=5
+DynamicUser=yes
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+MemoryMax=1800M
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

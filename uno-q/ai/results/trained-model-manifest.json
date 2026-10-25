@@ -1,0 +1,8 @@
+{
+  "model": "Bob Qwen3-0.6B merged LoRA",
+  "quantization": "Q4_K_M",
+  "llama_cpp": "b11869",
+  "bytes": 396704640,
+  "sha256": "5c994bb692749a62dfddc39511fc74a6b64f0d26e3f221f6e4d36f4d64ff8978",
+  "source_sha256": "52975d9d3553ce966b366538e7689976fc18cdbf62a38cf23d8561280f5ed8f4"
+}

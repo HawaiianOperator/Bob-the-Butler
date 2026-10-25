@@ -1,0 +1,135 @@
+{
+  "hardware": "Arduino UNO Q 4GB",
+  "architecture": "aarch64",
+  "runtime": "b11869",
+  "scope": "Synthetic UI smoke test only; no actions executed; not a general desktop accuracy evaluation.",
+  "results": [
+    {
+      "model": "SmolVLM-500M-Instruct",
+      "precision": "Q8_0",
+      "cpu_threads": 4,
+      "context": 2048,
+      "cases": [
+        {
+          "id": "grounding-1",
+          "seconds": 89.66,
+          "output": "{\n    \"title\": \"Bob evaluation window - synthetic UI\",\n    \"content\": [\n        {\n            \"title\": \"Choose an action for this document.\",\n            \"content\": [\n                {\n                    \"title\":",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 333,
+            "prompt_ms": 84625.128,
+            "prompt_per_token_ms": 254.1295135135135,
+            "prompt_per_second": 3.9350014336167383,
+            "predicted_n": 48,
+            "predicted_ms": 4807.827,
+            "predicted_per_token_ms": 102.29419148936171,
+            "predicted_per_second": 9.77572612325693
+          },
+          "hit": false
+        },
+        {
+          "id": "grounding-2",
+          "seconds": 84.54,
+          "output": "{\n    \"x\": 0,\n    \"y\": 0\n}",
+          "timings": {
+            "cache_n": 40,
+            "prompt_n": 293,
+            "prompt_ms": 82739.817,
+            "prompt_per_token_ms": 282.38845392491464,
+            "prompt_per_second": 3.5412212719783995,
+            "predicted_n": 17,
+            "predicted_ms": 1604.271,
+            "predicted_per_token_ms": 100.2669375,
+            "predicted_per_second": 9.973377315927296
+          },
+          "hit": false
+        },
+        {
+          "id": "chat-intent",
+          "seconds": 5.31,
+          "output": "{\n    \"title\": \"NVIDIA Stock Market\",\n    \"subtitle\": \"Open, Close, Change, and More Change\",\n    \"events\": [\n        {\n            \"event\": \"",
+          "hit": false,
+          "timings": {
+            "cache_n": 3,
+            "prompt_n": 49,
+            "prompt_ms": 2328.081,
+            "prompt_per_token_ms": 47.511857142857146,
+            "prompt_per_second": 21.047377647083582,
+            "predicted_n": 40,
+            "predicted_ms": 2961.289,
+            "predicted_per_token_ms": 75.93048717948719,
+            "predicted_per_second": 13.169940522522454
+          }
+        }
+      ],
+      "load_seconds": 1.59,
+      "peak_rss_kib": 793068
+    },
+    {
+      "model": "SmolVLM-256M-Instruct",
+      "precision": "Q8_0",
+      "cpu_threads": 4,
+      "context": 2048,
+      "cases": [
+        {
+          "id": "grounding-1",
+          "seconds": 76.57,
+          "output": "{\n  \"text\": {\n    \"text\": \"Choose an action for this document.\"\n  },\n  \"buttons\": [\n    {\n      \"text\": \"Open\",\n      \"button\": \"Save\"\n    },",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 333,
+            "prompt_ms": 74035.253,
+            "prompt_per_token_ms": 222.32808708708708,
+            "prompt_per_second": 4.4978572572717495,
+            "predicted_n": 48,
+            "predicted_ms": 2318.893,
+            "predicted_per_token_ms": 49.338148936170214,
+            "predicted_per_second": 20.26829180992827
+          },
+          "hit": false
+        },
+        {
+          "id": "grounding-2",
+          "seconds": 75.52,
+          "output": "{\n    \"text\": {\n        \"text\": \"Save\"\n    },\n    \"corrects\": [\n        {\n            \"text\": \"Cancel\"\n        },\n        {\n            \"text\": \"Open\"\n       ",
+          "timings": {
+            "cache_n": 40,
+            "prompt_n": 293,
+            "prompt_ms": 73018.62,
+            "prompt_per_token_ms": 249.21030716723547,
+            "prompt_per_second": 4.012675123139824,
+            "predicted_n": 48,
+            "predicted_ms": 2318.147,
+            "predicted_per_token_ms": 49.32227659574468,
+            "predicted_per_second": 20.274814323681806
+          },
+          "hit": false
+        },
+        {
+          "id": "chat-intent",
+          "seconds": 2.21,
+          "output": "{\n    \"query\": {\n        \"type\": \"query\",\n        \"q\": \"nvidia\"\n    },\n    \"response\": {\n        \"type\": \"response\",\n        \"q\":",
+          "hit": false,
+          "timings": {
+            "cache_n": 3,
+            "prompt_n": 49,
+            "prompt_ms": 937.858,
+            "prompt_per_token_ms": 19.13995918367347,
+            "prompt_per_second": 52.24671538761732,
+            "predicted_n": 40,
+            "predicted_ms": 1258.594,
+            "predicted_per_token_ms": 32.271641025641024,
+            "predicted_per_second": 30.986958463173988
+          }
+        }
+      ],
+      "load_seconds": 1.52,
+      "peak_rss_kib": 487756
+    }
+  ],
+  "fixture_pixels": [
+    1280,
+    720
+  ],
+  "response_constraint": "JSON object only, no property schema"
+}

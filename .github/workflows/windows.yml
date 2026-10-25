@@ -1,0 +1,84 @@
+name: Build Bob for Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'src/**'
+      - 'src-tauri/**'
+      - 'uno-q/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'tsconfig.json'
+      - 'vite.config.ts'
+      - 'index.html'
+      - '.github/workflows/windows.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: windows-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri -> target
+      - name: Install frontend dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Check protocol
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Continue'
+          $PSNativeCommandUseErrorActionPreference = $false
+          $env:CARGO_TERM_COLOR = 'never'
+          $diagnostics = & cargo test --manifest-path src-tauri/Cargo.toml 2>&1
+          $result = $LASTEXITCODE
+          $diagnostics | ForEach-Object { Write-Output $_ }
+          if ($result -ne 0) {
+            $diagnostics | Select-Object -Last 40 | ForEach-Object { Write-Output "::error::$_" }
+            exit $result
+          }
+      - name: Check UNO Q receiver
+        run: python -m unittest discover -s uno-q -p "test_*.py" -v
+      - name: Check AI output and tool contracts
+        run: python -m unittest discover -s uno-q/ai -p "test_*.py" -v
+      - name: Build Windows executable and installer
+        run: pnpm tauri build
+      - name: Copy portable executable to repository root
+        shell: pwsh
+        run: Copy-Item -LiteralPath 'src-tauri/target/release/bob-the-butler.exe' -Destination 'DeviceCompanion.exe' -Force
+      - name: Upload Windows downloads
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bob-the-Butler-Windows
+          path: |
+            DeviceCompanion.exe
+            src-tauri/target/release/bundle/nsis/*-setup.exe
+      - name: Commit the executable
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        shell: pwsh
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add DeviceCompanion.exe
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) { exit 0 }
+          git commit -m 'Build Bob the Butler Windows executable'
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git push origin HEAD:master

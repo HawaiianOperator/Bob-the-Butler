@@ -1,0 +1,6 @@
+{
+  "identifier": "main-widget",
+  "description": "Allow the local widget to drag and close its own window.",
+  "windows": ["main", "sharing-stop"],
+  "permissions": ["core:default", "core:window:allow-start-dragging", "core:window:allow-close"]
+}

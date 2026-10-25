@@ -1,0 +1,65 @@
+{
+  "kind": "Closed-loop UNO Q inference with simulated Chrome, no desktop execution",
+  "success": true,
+  "seconds": 65.372,
+  "results": [
+    {
+      "index": 0,
+      "plan": {
+        "tool": "launch_chrome",
+        "args": {
+          "url": "https://www.google.com/"
+        }
+      },
+      "seconds": 6.047
+    },
+    {
+      "index": 1,
+      "plan": {
+        "tool": "hotkey",
+        "args": {
+          "keys": "ctrl+l"
+        }
+      },
+      "seconds": 9.937
+    },
+    {
+      "index": 2,
+      "plan": {
+        "tool": "type_text",
+        "args": {
+          "text": "Nvidia stock"
+        }
+      },
+      "seconds": 10.054
+    },
+    {
+      "index": 3,
+      "plan": {
+        "tool": "observe",
+        "args": {}
+      },
+      "seconds": 10.874
+    },
+    {
+      "index": 4,
+      "plan": {
+        "tool": "press_key",
+        "args": {
+          "key": "enter"
+        }
+      },
+      "seconds": 11.209
+    },
+    {
+      "index": 5,
+      "plan": {
+        "tool": "done",
+        "args": {
+          "message": "Showing search results for Nvidia stock."
+        }
+      },
+      "seconds": 17.251
+    }
+  ]
+}

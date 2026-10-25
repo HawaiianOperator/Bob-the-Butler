@@ -1,0 +1,24 @@
+[Unit]
+Description=Bob the Butler UNO Q receiver
+After=local-fs.target
+StartLimitIntervalSec=60
+StartLimitBurst=10
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -u /opt/bob-the-butler/bob_service.py
+WorkingDirectory=/opt/bob-the-butler
+Restart=on-failure
+RestartSec=3
+DynamicUser=yes
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+UMask=0077
+StandardOutput=journal
+StandardError=journal
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target

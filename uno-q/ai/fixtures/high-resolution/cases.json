@@ -1,0 +1,24 @@
+[
+  {
+    "id": "grounding-1",
+    "image": "buttons-1.png",
+    "prompt": "Point to the center of the Save button. Return only JSON with numeric x and y between 0 and 1.",
+    "box": [
+      0.390625,
+      0.5277777777777778,
+      0.6015625,
+      0.6527777777777778
+    ]
+  },
+  {
+    "id": "grounding-2",
+    "image": "buttons-2.png",
+    "prompt": "Point to the center of the Save button. Return only JSON with numeric x and y between 0 and 1.",
+    "box": [
+      0.1171875,
+      0.5277777777777778,
+      0.328125,
+      0.6527777777777778
+    ]
+  }
+]
